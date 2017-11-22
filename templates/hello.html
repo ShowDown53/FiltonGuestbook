@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome to Filton{% endblock title %}
+
+{% block content %}
+<form method="post">
+  <h2>Your satisfaction is our top priority. Please let us know what you think about our hotels.</h2>
+  <p>Your name: <input type="text" name="guest_name" /></p>
+  <p>Your email: <input type="email" name="guest_mail" placeholder="Optional, only visible to staff"/></p>
+  <p><textarea name="guest_message" rows="10" cols="80" placeholder="Tell us more about your stay at Filton Hotels" required></textarea></p>
+  <button type="submit">Send</button>
+</form>
+<hr>
+<h3><u>WHAT OTHER GUESTS WROTE:</u></h3>
+<br>
+{% for x in messages %}
+<p>{{ x.name }} wrote:</p>
+<p><strong>{{ x.message }}</strong></p>
+<p><sup>{{ x.date.strftime('%d %B %Y at %H:%M') }}</sup></p>
+<p>* * * * *</p>
+{% else %}
+    <p>No reviews yet. Be the first to review our services.</p>
+{% endfor %}
+{% endblock content %}
